@@ -1,0 +1,51 @@
+﻿<h3>CambioMoneda</h3>
+
+@page "/cambiomoneda"
+@rendermode InteractiveServer
+
+<h3>Cambio de moneda</h3>
+
+<div class="mb-3">
+    <label>Pesos</label>
+    <input type="number" class="form-control" @bind="pesos" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="CalcularCambio">
+    Calcular cambio
+</button>
+
+<div class="mb-2">
+    <label>Dólares</label>
+    <input class="form-control" value="@dolares" disabled />
+</div>
+
+<div class="mb-2">
+    <label>Euros</label>
+    <input class="form-control" value="@euros" disabled />
+</div>
+
+<div class="mb-2">
+    <label>Libras</label>
+    <input class="form-control" value="@libras" disabled />
+</div>
+
+@code {
+    int pesos;
+    double dolares;
+    double euros;
+    double libras;
+
+    double tipoDolar = 17.0;
+    double tipoEuro = 18.5;
+    double tipoLibra = 21.5;
+
+    void CalcularCambio()
+    {
+        if (pesos > 0)
+        {
+            dolares = pesos / tipoDolar;
+            euros = pesos / tipoEuro;
+            libras = pesos / tipoLibra;
+        }
+    }
+}
